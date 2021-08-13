@@ -4,40 +4,32 @@ namespace PalindromeOrNot
 {
     class Program
     {
-             // A recursive function that checks whether string is Palindrome or not
+        // A recursive function that checks whether string is Palindrome or not
         static bool IsPalindromeRec(String str, int start, int end)
         {
-            //If there is only one character return true
-            if (start == end)
-                return true;
+         var check = (start == end) ? true : (str[start] != str[end]) ;
 
-            //if 1st and last character do not match
-            if (str[start] != str[end])
-                return false;
+         //if there are more than two characters, check if middle substring is palindrome or not
 
-            //if there are more than two characters, check if middle substring is palindrome or not
-
-            if (start < end + 1)
-                return IsPalindromeRec(str, start + 1, end - 1);
-                return true;
+         if (start < end + 1)
+            return IsPalindromeRec(str, start + 1, end - 1);
+            return true;
         }
         static bool isPalindrome(String str)
         {
-            int sizeOfString = str.Length;
+         int sizeOfString = str.Length;
 
-            //empty string is considered as palindrome
-            if (sizeOfString == 0)
-                return true;
-                return IsPalindromeRec(str , 0, sizeOfString - 1);
+         //empty string is considered as palindrome
+         var zeroString = sizeOfString == 0 ? true : false;
+         return IsPalindromeRec(str , 0, sizeOfString - 1);
         }
-
         static void Main(String[]args)
         {
-            String str = Console.ReadLine();
-            if (isPalindrome(str))
-                Console.WriteLine("Yes");
-            else
-                Console.WriteLine("No");
+         string str = Console.ReadLine();
+         if (isPalindrome(str))
+             Console.WriteLine("Yes");
+         else
+             Console.WriteLine("No");
 
          Console.ReadLine();
         }
